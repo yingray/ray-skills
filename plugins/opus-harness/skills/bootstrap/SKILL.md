@@ -1,0 +1,50 @@
+---
+name: bootstrap
+description: Install the opus-harness operating protocol into the current project. Use when the user says "bootstrap", "set up the harness", "initialize the protocol", "install opus-harness here", runs /opus-harness:bootstrap, or starts serious work in a repo that has no CLAUDE.md protocol or scripts/quick-check.sh yet. Generates the protocol CLAUDE.md, the quick-check gate, proposes minimal permissions, seeds memory, and verifies the hook fires.
+---
+
+# Bootstrap the Harness
+
+Installs the three project-side pieces the plugin cannot ship directly: the
+always-on protocol (CLAUDE.md), the fast verification gate
+(scripts/quick-check.sh), and minimal permission rules (security-sensitive,
+therefore proposed — never silently written).
+
+Follow the protocol you are installing while you install it: verify every
+claim, state rollbacks, ask before overwriting anything.
+
+## Steps
+
+1. **Protocol → CLAUDE.md**
+   - Read `${CLAUDE_PLUGIN_ROOT}/skills/bootstrap/assets/protocol.md`.
+   - No CLAUDE.md in the project → write it verbatim.
+   - CLAUDE.md exists → do NOT overwrite. Show the user a proposed merge
+     (their content preserved, protocol appended or interleaved) and wait
+     for approval.
+
+2. **Verification gate → scripts/quick-check.sh**
+   - Copy `${CLAUDE_PLUGIN_ROOT}/skills/bootstrap/assets/quick-check-template.sh`
+     to `scripts/quick-check.sh`; make it executable.
+   - Detect the stack (package.json / pyproject.toml / Cargo.toml / go.mod / …)
+     and replace the TODO with the fastest meaningful checks: typecheck + lint
+     + smoke-test subset, under 60 seconds total.
+   - Verify BOTH directions: it passes on the current tree, and it fails when
+     you deliberately break a file. Restore the file afterwards.
+
+3. **Permissions (propose, don't write)**
+   - Show `${CLAUDE_PLUGIN_ROOT}/skills/bootstrap/assets/permissions-snippet.json`
+     and explain the tiers: allow = frictionless checkpoint commits + the gate;
+     ask = destructive safety net that prompts even in permissive modes;
+     deny = force-push and secret files.
+   - Merge into `.claude/settings.json` only after explicit user approval.
+   - Remind the user: project rules and hooks take effect only after the
+     workspace trust dialog is accepted.
+
+4. **Seed memory**
+   - Write to auto memory: a short repo map (top-level layout, entry points),
+     the exact build/test/run commands, and anything surprising found during setup.
+
+5. **Prove the loop**
+   - Make a trivial edit; confirm the PostToolUse hook ran quick-check.
+   - Report with evidence (paste command outputs). Anything not proven is
+     listed as `UNVERIFIED:`.

@@ -1,0 +1,5 @@
+{
+  "name": "opus-harness",
+  "version": "0.1.0",
+  "description": "Process, memory, and verification harness that pushes Opus-class models toward Fable-class reliability on software engineering work. Ships a fresh-context reviewer, a debug belief-reset protocol, a post-edit verification hook, a wrapup ritual, and a bootstrap skill that installs the operating protocol into each project."
+}
