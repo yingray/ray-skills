@@ -40,6 +40,8 @@ Write to the memory directory, then update the MEMORY.md index (keep it terse):
 - PRUNE stale or duplicated notes in any topic file you touched.
 - PROMOTE: anything that has now bitten twice → propose it to the user as a
   CLAUDE.md rule.
+- If the MEMORY.md index has grown bloated, suggest running the
+  `distill-memory` skill.
 
 ## 5. Report
 Short summary: what shipped (verified, with evidence), what remains
