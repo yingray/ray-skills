@@ -2,9 +2,11 @@
 
 Personal Claude Code plugin marketplace.
 
-The core document is [protocol.md](protocol.md) — the ~60-line operating
-protocol everything else serves. The `bootstrap` skill installs it into each
-project as its CLAUDE.md.
+The core document is [protocol.md](protocol.md) — the operating protocol
+everything else serves. It is deliberately tool-agnostic: usable as guiding
+principles for any AI, with no dependency on this marketplace's plugins.
+The `bootstrap` skill installs it into each project as its CLAUDE.md and
+appends the environment-specific bindings separately.
 
 Plugins:
 - [opus-harness](plugins/opus-harness/README.md) — process, memory, and
