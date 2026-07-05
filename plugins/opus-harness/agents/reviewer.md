@@ -24,6 +24,8 @@ Process:
    - leftover scaffolding: debug prints, commented-out blocks, backup files,
      stale feature toggles
    - the same bug pattern surviving elsewhere (grep for siblings)
+   - UI-facing changes: green tests are not enough — render or screenshot the
+     affected screen and look at it
 
 Verdict rules (evidence-based blocking):
 - BLOCK only for a concrete, verified, consequential problem — name file:line

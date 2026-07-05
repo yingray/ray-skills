@@ -12,7 +12,8 @@ the full procedures; CLAUDE.md rules 3, 5, and 8 point here.
 ## 1. Final verification (gate)
 Run `scripts/quick-check.sh` and the relevant tests one last time; paste the
 results. Anything not verified is reported to the user as `UNVERIFIED:` —
-never silently.
+never silently. If any summary claims "all green" or "nothing missing",
+spot-check one underlying record yourself — aggregators fail silently.
 
 ## 2. Class sweep
 For each bug fixed or lesson learned this session: it was probably a CLASS,

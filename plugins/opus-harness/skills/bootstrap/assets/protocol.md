@@ -50,7 +50,8 @@ and docs for the existing pattern first. Options exhausted + goal non-negotiable
 - Something odd resists explanation (Chesterton's fence: know why it stands
   before removing it).
 - A debug-reset has already failed once on this bug.
-Escalating with a crisp summary is success, not failure.
+Escalate WITH the trail — approaches tried, exact errors, hypotheses ruled
+out — or the next mind rewalks your dead ends. A crisp escalation is success.
 
 ## 8. Surgical scope
 - Every changed line traces to the request. Don't "improve" adjacent code; match
