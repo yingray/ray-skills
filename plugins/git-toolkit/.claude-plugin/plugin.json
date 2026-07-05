@@ -1,0 +1,5 @@
+{
+  "name": "git-toolkit",
+  "version": "0.1.0",
+  "description": "Git workflow skills: bulk-resolve GitHub PR review threads, and resolve merge conflicts by rebuilding the branch on the latest target with cherry-pick instead of merge commits."
+}

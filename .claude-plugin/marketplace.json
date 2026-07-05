@@ -9,6 +9,11 @@
       "name": "opus-harness",
       "source": "./plugins/opus-harness",
       "description": "Process, memory, and verification harness that pushes Opus-class models toward Fable-class reliability on software engineering work."
+    },
+    {
+      "name": "git-toolkit",
+      "source": "./plugins/git-toolkit",
+      "description": "Git workflow skills: bulk-resolve PR review threads, cherry-pick-based conflict resolution."
     }
   ]
 }

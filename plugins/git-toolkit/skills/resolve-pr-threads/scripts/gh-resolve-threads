@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+# Resolve ALL unresolved review threads on a GitHub PR in one go.
+#
+# usage: gh-resolve-threads <owner/repo> <pr-number> [--dry-run]
+#   --dry-run  list what would be resolved, change nothing
+#
+# Needs: gh (authenticated with write access to the repo).
+set -euo pipefail
+
+usage() { echo "usage: $(basename "$0") <owner/repo> <pr-number> [--dry-run]" >&2; exit 1; }
+[ $# -ge 2 ] || usage
+REPO="$1"; PR="$2"; DRY="${3:-}"
+OWNER="${REPO%%/*}"; NAME="${REPO##*/}"
+
+# List unresolved threads (paginated, so >100 threads is fine).
+# Format per line: <thread-id>\t<path>:<line>\t<first-comment-author>
+threads=$(gh api graphql --paginate \
+  -F owner="$OWNER" -F name="$NAME" -F pr="$PR" \
+  -f query='
+    query($owner: String!, $name: String!, $pr: Int!, $endCursor: String) {
+      repository(owner: $owner, name: $name) {
+        pullRequest(number: $pr) {
+          reviewThreads(first: 100, after: $endCursor) {
+            pageInfo { hasNextPage endCursor }
+            nodes {
+              id isResolved path line
+              comments(first: 1) { nodes { author { login } } }
+            }
+          }
+        }
+      }
+    }' \
+  --jq '.data.repository.pullRequest.reviewThreads.nodes[]
+        | select(.isResolved | not)
+        | [.id, "\(.path):\(.line // "?")", .comments.nodes[0].author.login] | @tsv')
+
+if [ -z "$threads" ]; then
+  echo "No unresolved threads on $REPO#$PR."
+  exit 0
+fi
+
+count=$(wc -l <<<"$threads" | xargs)
+echo "Unresolved thread(s) on $REPO#$PR: $count"
+echo "$threads" | awk -F'\t' '{printf "  - %s  (by %s)\n", $2, $3}'
+
+if [ "$DRY" = "--dry-run" ]; then
+  echo "(dry-run: nothing resolved)"
+  exit 0
+fi
+
+n=0
+while IFS=$'\t' read -r id loc author; do
+  gh api graphql \
+    -f query='mutation($id: ID!) {
+      resolveReviewThread(input: {threadId: $id}) { thread { isResolved } }
+    }' -F id="$id" --jq '.data.resolveReviewThread.thread.isResolved' >/dev/null
+  n=$((n + 1))
+  echo "resolved $n/$count: $loc"
+done <<<"$threads"
+echo "Done."
