@@ -1,0 +1,14 @@
+{
+  "name": "ray-skills",
+  "description": "Personal marketplace shipping opus-harness: a process, memory, and verification harness for Claude Code software engineering work.",
+  "owner": {
+    "name": "yingray"
+  },
+  "plugins": [
+    {
+      "name": "opus-harness",
+      "source": "./plugins/opus-harness",
+      "description": "Process, memory, and verification harness that pushes Opus-class models toward Fable-class reliability on software engineering work."
+    }
+  ]
+}
