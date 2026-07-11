@@ -14,6 +14,11 @@
       "name": "git-toolkit",
       "source": "./plugins/git-toolkit",
       "description": "Git workflow skills: bulk-resolve PR review threads, cherry-pick-based conflict resolution."
+    },
+    {
+      "name": "ray-personal",
+      "source": "./plugins/ray-personal",
+      "description": "Ray's personal customizations: output styles and other per-user settings."
     }
   ]
 }
