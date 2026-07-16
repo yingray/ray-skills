@@ -1,5 +1,5 @@
 {
   "name": "ray-personal",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Ray's personal customizations: output styles and other per-user settings that do not belong in shared plugins."
 }
