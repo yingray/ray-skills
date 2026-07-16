@@ -1,11 +1,11 @@
 ---
 name: talk-simple
-description: Reply in plain everyday language with no jargon. Use when the user types /talk-simple {message}. The reply to that message must be plain, concise, and concrete, with every technical term replaced or explained in everyday words.
+description: Reply in plain everyday language with no jargon. Use when the user types /ray-personal:talk-simple {message} or asks for talk-simple. The reply to that message must be plain, concise, and concrete, with every technical term replaced or explained in everyday words.
 ---
 
 # Talk Simple（白話模式）
 
-使用者用 `/talk-simple {message}` 提問時，針對 `{message}` 的回覆必須穩定符合
+使用者用 `/ray-personal:talk-simple {message}` 提問時，針對 `{message}` 的回覆必須穩定符合
 以下規則。若使用者沒有附上訊息，則這些規則套用到接下來的回覆，直到使用者
 說取消為止。
 

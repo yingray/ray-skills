@@ -1,11 +1,11 @@
 ---
 name: talk-less-simple
-description: Reply in plain jargon-free language AND under 100-200 characters. Use when the user types /talk-less-simple {message}. Combines the talk-simple and talk-less rules in one reply.
+description: Reply in plain jargon-free language AND under 100-200 characters. Use when the user types /ray-personal:talk-less-simple {message} or asks for talk-less-simple. Combines the talk-simple and talk-less rules in one reply.
 ---
 
 # Talk Less Simple（白話短答模式）
 
-使用者用 `/talk-less-simple {message}` 提問時，針對 `{message}` 的回覆必須
+使用者用 `/ray-personal:talk-less-simple {message}` 提問時，針對 `{message}` 的回覆必須
 同時符合 talk-simple 與 talk-less 的全部規則。若使用者沒有附上訊息，則這些
 規則套用到接下來的回覆，直到使用者說取消為止。
 

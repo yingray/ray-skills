@@ -1,11 +1,11 @@
 ---
 name: talk-less
-description: Reply in under 100-200 characters. Use when the user types /talk-less {message}. The reply to that message must stay short - aim for 100 characters, hard cap 200.
+description: Reply in under 100-200 characters. Use when the user types /ray-personal:talk-less {message} or asks for talk-less. The reply to that message must stay short - aim for 100 characters, hard cap 200.
 ---
 
 # Talk Less（短答模式）
 
-使用者用 `/talk-less {message}` 提問時，針對 `{message}` 的回覆必須穩定符合
+使用者用 `/ray-personal:talk-less {message}` 提問時，針對 `{message}` 的回覆必須穩定符合
 以下規則。若使用者沒有附上訊息，則這些規則套用到接下來的回覆，直到使用者
 說取消為止。
 
